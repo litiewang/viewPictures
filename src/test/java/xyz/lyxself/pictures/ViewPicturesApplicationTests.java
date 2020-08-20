@@ -2,6 +2,9 @@ package xyz.lyxself.pictures;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONReader;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
 import org.json.JSONException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +15,7 @@ import xyz.lyxself.pictures.dao.OnewordDao;
 import xyz.lyxself.pictures.entity.Oneword;
 
 import java.io.*;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -22,6 +26,39 @@ public class ViewPicturesApplicationTests {
 
 	@Autowired
 	OnewordDao dao;
+	@Test
+	public  void gson( ){
+		String jsonPath = "G:/weixin/test.json";
+		//	String jsonPath = "G:/weixin/demo.json";
+		File file = new File(jsonPath);
+		InputStream inputStream = null;
+		InputStreamReader inputStreamReader= null;
+		try {
+			
+			inputStream = new FileInputStream(file);
+			inputStreamReader = new InputStreamReader(inputStream);
+			JsonReader jsonReader = new JsonReader(inputStreamReader);
+			
+			Gson gson = new Gson();
+			Type type = new TypeToken<List<Oneword>>(){}.getType();
+			
+			List<Oneword> mstus=gson.fromJson(jsonReader,   type);
+		 dao.saveAll(mstus);
+		}  catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if(null != inputStream){
+					inputStream.close();
+				}
+				if(null != inputStreamReader){
+					inputStreamReader.close();
+				}
+			} catch (Exception e2) {
+			}
+		}
+	}
+	
 	@Test
 	public  void getOrderObjectsByClass( ){
 		 String jsonPath = "G:/weixin/test.json";
@@ -84,18 +121,7 @@ public class ViewPicturesApplicationTests {
 			int test1=0;
 			int test2 =0 ;
 			while(reader.hasNext()) {
-//				String str = reader.readString();
-//				test1++;
-//				if(test1>10010){
-//					list.add(JSONObject.parseObject(str, Oneword.class));
-//					if (list.size() > 1000) {
-//						dao.saveAll(list);
-//						list.clear();
-//						System.gc();
-//					}
-//				}
-			//dao.save(JSONObject.parseObject(reader.readString(), Oneword.class));
-				dao.save(reader.readObject(Oneword.class));
+ 				dao.save(reader.readObject(Oneword.class));
 			}
 			//   }
 //			if(list.size()>0){
@@ -127,7 +153,7 @@ public class ViewPicturesApplicationTests {
 
 	@Test
 	public   void genetateJsonFormatFile1(){
-		String originPath= "G:/weixin/database_export-tAUpLsFRxyL3.json";
+		String originPath= "G:/weixin/database_export-5mrfm6xN7NwI.json";
 		String orderPath= "G:/weixin/test.json";
 		File file = new File(originPath);
 
