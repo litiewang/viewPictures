@@ -1,6 +1,5 @@
 package xyz.lyxself.pictures.entity;
 
-import com.alibaba.fastjson.JSONPObject;
 import lombok.Data;
 
 import javax.persistence.*;
