@@ -20,6 +20,8 @@ spring:
 
 
   jpa:
+    show-sql: true # 显示sql
+    open-in-view: false
     hibernate:
-      ddl-auto: update
-    show-sql: false
+      ddl-auto: update  # 自动建表，更新表
+      dialect: org.hibernate.dialect.MySQL5Dialect

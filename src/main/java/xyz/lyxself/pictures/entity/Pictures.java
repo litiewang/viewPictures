@@ -15,7 +15,7 @@ public class Pictures {
 	@Id // 数据库组件
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // 组件生成策略
 	//@Column  绑定数据库中的列
-	@Column(name = "mid")
+	@Column(name = "mid" ,length = 32)
 	private Long mid;
 	@Column(name = "photo")
 	private String photo;

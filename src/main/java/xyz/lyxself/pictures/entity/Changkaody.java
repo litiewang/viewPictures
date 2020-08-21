@@ -10,10 +10,8 @@ import javax.persistence.*;
 public class Changkaody {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // 组件生成策略
-    @Column(name = "mid")// @Column 绑定数据库中的列
-            String id;
-    @Column(name = "_id")
+    //@GeneratedValue(strategy = GenerationType.IDENTITY) // 组件生成策略
+    @Column(name = "mid" ,length = 32)// @Column 绑定数据库中的列
     String _id;
     @Column(name = "changkaodyfy")
     String changkaodyfy;

@@ -13,7 +13,7 @@ import lombok.Data;
 public class Article {
 	@Id // 数据库组件
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // 组件生成策略
-	@Column(name = "mid")// @Column 绑定数据库中的列
+	@Column(name = "mid" ,length = 32)// @Column 绑定数据库中的列
 	private Long mid;
 	@Column(name = "header")
 	private String header;

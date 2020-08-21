@@ -6,8 +6,8 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "t_liuyan") //映射的表名称
-public class Liuyan {
+@Table(name = "t_tuijiancd") //映射的表名称
+public class Tuijiancd {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 组件生成策略
@@ -15,12 +15,10 @@ public class Liuyan {
             Integer id;
     @Column(name = "_id")
     String _id;
-    @Column(name = "_openid")
-    String _openid;
-    @Column(name = "openid")
-    String openid;
-    @Column(name = "logdate")
-    String logdate;
-    @Column(name = "liuyan")
-    String liuyan;
+    @Column(name = "danci")
+    String danci;
+    @Column(name = "zhubiaoti")
+    String zhubiaoti;
+    @Column(name = "name")
+    String name;
 }
