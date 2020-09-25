@@ -1,27 +1,12 @@
 spring:
-  datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    driverClassName: com.mysql.cj.jdbc.Driver
-    password: root
-    url: jdbc:mysql://localhost:3306/test?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
-    username: root
-    initialSize: 5
-    maxActive: 300
-    maxPoolPreparedStatementPerConnectionSize: 20
-    maxWait: 60000
-    minEvictableIdleTimeMillis: 300000
-    minIdle: 5
-    poolPreparedStatements: true
-    testOnBorrow: false
-    testOnReturn: false
-    testWhileIdle: true
-    timeBetweenEvictionRunsMillis: 60000
-    validationQuery: SELECT 1 FROM DUAL
-
-
-  jpa:
-    show-sql: true # 显示sql
-    open-in-view: false
-    hibernate:
-      ddl-auto: update  # 自动建表，更新表
-      dialect: org.hibernate.dialect.MySQL5Dialect
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      max-file-size: 512MB
+      max-request-size: 1024MB
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: UTF-8

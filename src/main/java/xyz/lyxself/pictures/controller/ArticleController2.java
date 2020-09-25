@@ -5,17 +5,14 @@ import com.alibaba.fastjson.JSONReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import xyz.lyxself.pictures.dao.OnewordDao;
-import xyz.lyxself.pictures.entity.Article;
 import xyz.lyxself.pictures.entity.Oneword;
-import xyz.lyxself.pictures.service.ArticleService;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("oneword")
-@CrossOrigin(value = "*", allowCredentials = "true")
+@RequestMapping("/oneword")
 public class ArticleController2 {
     @Autowired
     OnewordDao dao;

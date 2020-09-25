@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import xyz.lyxself.pictures.entity.Changkaody;
 
 @Repository
-public interface  ChangkaodyDao extends JpaRepository<Changkaody, String> {
+public interface  ChangkaodyDao extends JpaRepository<Changkaody, Integer> {
 
 }
 

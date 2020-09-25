@@ -1,41 +1,27 @@
 package xyz.lyxself.pictures.entity;
 
-import com.vladmihalcea.hibernate.type.json.JsonStringType;
 import lombok.Data;
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @Entity
 @Table(name = "t_jinyicibianxi") //映射的表名称
-@TypeDef(name = "json", typeClass = JsonStringType.class)
 public class Jinyicibianxi {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 组件生成策略
     @Column(name = "mid",length = 32)// @Column 绑定数据库中的列
-            Integer id;
-    @Column(name = "_id")
+            Integer mid;
+    @Column(name = "oid")
     String _id;
     @Column(name = "danci")
     String danci;
-    @Type(type = "json")
-    @Column(columnDefinition = "json" )
-    private List<Jinyicibx> jinyicibx;
-    @Column(name = "_openid")
+    @Column( columnDefinition = "text",name = "jinyicibx")
+    private String jinyicibx;
+    @Column(name = "openid")
     String _openid;
 
 
-    @Data
-    public class Jinyicibx{
-        @Column(name = "dancizu")
-        String dancizu;
-        @Column(name = "danci")
-        String danci;
-        @Column(name = "bianxi")
-        String bianxi;
-    }
+    
 }

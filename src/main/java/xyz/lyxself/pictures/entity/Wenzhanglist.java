@@ -12,7 +12,9 @@ public class Wenzhanglist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 组件生成策略
     @Column(name = "mid" ,length = 32)// @Column 绑定数据库中的列
-            Integer id;
+            Integer mid;
+    @Column(name = "oid")
+    String _id;
     @Column(name = "name")
     String name;
     @Column(name = "zhuangtai")
@@ -47,7 +49,7 @@ public class Wenzhanglist {
     @Column(name = "jiancha")
     String jiancha;
     
-    @Column(name = "zhongchuan ")
+    @Column(name = "zhongchuan")
     String 重传;
     @Column(name = "quanzhong")
     String quanzhong;
@@ -61,5 +63,9 @@ public class Wenzhanglist {
     String huiyuan;
     @Column(name = "jihuots")
     String jihuots;
+    @Column(name = "hot")
+    String hot;
+    @Column(name = "shouyetb")
+    String shouyetb;
     
 }

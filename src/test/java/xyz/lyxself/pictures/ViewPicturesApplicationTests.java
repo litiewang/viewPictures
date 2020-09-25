@@ -20,7 +20,7 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ViewPicturesApplicationTests {
-
+	
 	@Autowired
 	OnewordDao dao;
 	@Test
@@ -59,7 +59,6 @@ public class ViewPicturesApplicationTests {
 	@Test
 	public  void getOrderObjectsByClass( ){
 		 String jsonPath = "G:/weixin/test.json";
-	//	String jsonPath = "G:/weixin/demo.json";
 		File file = new File(jsonPath);
 		InputStreamReader isr = null;
 		BufferedReader bufferedReader = null;
@@ -69,7 +68,6 @@ public class ViewPicturesApplicationTests {
 
 			JSONReader reader = new JSONReader(bufferedReader);
 			reader.startArray();
-		//	reader.startObject();
 			while (reader.hasNext()) {
 			String str = 	reader.readString();
 			if(str.indexOf("+Infinity")<0){
@@ -95,7 +93,8 @@ public class ViewPicturesApplicationTests {
 			}
 		}
 	}
-
+	
+	
 	/**
 	 * 通过输入的路径originPath，读取originPath下的所有json文件；
 	 * 在格式化之后，在另一个路径orderPath下生成同名的json文件名称；
@@ -115,16 +114,10 @@ public class ViewPicturesApplicationTests {
 			reader.startArray();
 			//	reader.startObject();
 			List<Oneword> list = new ArrayList<>();
-			int test1=0;
-			int test2 =0 ;
+		 
 			while(reader.hasNext()) {
  				dao.save(reader.readObject(Oneword.class));
 			}
-			//   }
-//			if(list.size()>0){
-//				dao.saveAll(list);
-//			}
-
 			reader.endArray();
 		}catch(UnsupportedEncodingException e) {
 			e.printStackTrace();

@@ -12,7 +12,9 @@ public class Ztliju {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 组件生成策略
     @Column(name = "mid" ,length = 32)// @Column 绑定数据库中的列
-            Integer id;
+            Integer mid;
+    @Column(name = "oid")
+    String _id;
     @Column(name = "liju")
     String liju;
     @Column(name = "lijufy")
@@ -21,7 +23,7 @@ public class Ztliju {
     String laiyuan;
     @Column(name = "name")
     String name;
-    @Column(name = "_openid")
+    @Column(name = "openid")
     String _openid;
     @Column(name = "danci")
     String danci;

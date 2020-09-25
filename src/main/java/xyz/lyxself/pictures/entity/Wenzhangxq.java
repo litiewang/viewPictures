@@ -12,7 +12,9 @@ public class Wenzhangxq {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 组件生成策略
     @Column(name = "mid" ,length = 32)// @Column 绑定数据库中的列
-            Integer id;
+            Integer mid;
+    @Column(name = "oid")
+    String _id;
     @Column(name = "leixing")
     String leixing;
     @Column(name = "name")
@@ -23,9 +25,9 @@ public class Wenzhangxq {
     String fubiaoti;
     @Column(name = "duanluo")
     String duanluo;
-    @Column(name = "yingwen")
+    @Column(columnDefinition = "text",name = "yingwen")
     String yingwen;
-    @Column(name = "fanyi")
+    @Column(columnDefinition = "text",name = "fanyi")
     String fanyi;
     @Column(name = "tupian")
     String tupian;

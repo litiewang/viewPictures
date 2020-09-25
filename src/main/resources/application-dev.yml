@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    password: root
+    url: jdbc:mysql://localhost:3306/test?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+    username: root
+    initialSize: 5
+    maxActive: 300
+    maxPoolPreparedStatementPerConnectionSize: 20
+    maxWait: 60000
+    minEvictableIdleTimeMillis: 300000
+    minIdle: 5
+    poolPreparedStatements: true
+    testOnBorrow: false
+    testOnReturn: false
+    testWhileIdle: true
+    timeBetweenEvictionRunsMillis: 60000
+    validationQuery: SELECT 1 FROM DUAL
+  jpa:
+    show-sql: true # 显示sql
+    open-in-view: false
+    hibernate:
+      ddl-auto: update  # 自动建表，更新表
+      dialect: org.hibernate.dialect.MySQL5Dialect
+logging:
+  #日志级别
+  level:
+    ROOT: debug
+  path: "logs"
+  file:
+    max-history: 50
+    max-size: 100MB
+  pattern:
+    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50}.%M-%L - %msg%n'
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50}.%M-%L - %msg%n'

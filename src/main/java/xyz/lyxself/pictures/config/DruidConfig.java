@@ -1,4 +1,4 @@
-package xyz.lyxself.pictures.controller.config;
+package xyz.lyxself.pictures.config;
 
 
 import com.alibaba.druid.pool.DruidDataSource;
