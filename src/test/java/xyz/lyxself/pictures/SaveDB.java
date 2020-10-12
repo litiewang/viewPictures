@@ -69,7 +69,7 @@ public class SaveDB {
     File[] files = originFile.listFiles();
     
     if (files.length > 0) {
-      for (int i = 7; i < files.length; i++) {
+      for (int i = 17; i < files.length; i++) {
         File file1 = files[i];
         String jsonPath = originPath + file1.getName();
         File file = new File(jsonPath);
