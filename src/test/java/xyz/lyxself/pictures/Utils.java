@@ -13,29 +13,36 @@ import com.tencentcloudapi.cdb.v20170320.models.DescribeTablesResponse;
 
 public class Utils
 {
-  public static void main(String [] args) {
+  
+  private void test(){
     try{
-      
+    
       Credential cred = new Credential("AKIDSfbGvJlGsEJp5fCLM6wVmmZ5KnzmmgnI", "C7boLbaMqwmnX0EDqF1Zz1m7C0XtRijq");
-      
+    
       HttpProfile httpProfile = new HttpProfile();
       httpProfile.setEndpoint("cdb.tencentcloudapi.com");
-      
+    
       ClientProfile clientProfile = new ClientProfile();
       clientProfile.setHttpProfile(httpProfile);
-      
+    
       CdbClient client = new CdbClient(cred, "ap-guangzhou", clientProfile);
-      
+    
       String params = "{\"InstanceId\":\"cdb-lwwl78gb\",\"Database\":\"kyoneword\"}";
       DescribeTablesRequest req = DescribeTablesRequest.fromJsonString(params, DescribeTablesRequest.class);
-      
+    
       DescribeTablesResponse resp = client.DescribeTables(req);
-      
+    
       System.out.println(DescribeTablesResponse.toJsonString(resp));
     } catch (TencentCloudSDKException e) {
       System.out.println(e.toString());
     }
-    
+  
+  }
+  public static void main(String [] args) {
+      String a = "1.0";
+    Integer roundCount =Double.valueOf(a).intValue();
+  
+    System.out.println(roundCount);
   }
   
 }

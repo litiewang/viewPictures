@@ -1,9 +1,6 @@
 package xyz.lyxself.pictures;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONException;
-import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.JSONReader;
+import com.alibaba.fastjson.*;
 import lombok.SneakyThrows;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,6 +16,7 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -79,10 +77,10 @@ public class SaveMongoDB {
       JSONObject jsonObject = JSON.parseObject(str);
       MoOneword moOneword= jsonObject.toJavaObject(MoOneword.class);
       JSONObject zhangwoJson = setDate(JSON.parseObject(moOneword.getZhangwo().replace("$date","date")));
-      
-      moOneword.setZhangwoJson(zhangwoJson);
+     
+      moOneword.setZhangwoJson(zhangwoToInt(zhangwoJson));
       JSONObject readdcJson = setDate(JSON.parseObject(moOneword.getReaddc().replace("$date","date")));
-      moOneword.setReaddcJson(readdcJson);
+      moOneword.setReaddcJson(readdcToInt(readdcJson));
       
       mongoTemplate.save(moOneword);
       
@@ -93,7 +91,50 @@ public class SaveMongoDB {
       
     }
   }
+ private JSONObject zhangwoToInt(JSONObject zhangwoJson){
+   for (Map.Entry entry : zhangwoJson.entrySet()) {
+     JSONObject zhangwoItem = (JSONObject)entry.getValue();
   
+     String fuxi =zhangwoItem.getString("fuxi");
+  
+     String renshi =zhangwoItem.getString("renshi");
+     String jiyizhouqi =zhangwoItem.getString("jiyizhouqi");
+     String zongrenshi =zhangwoItem.getString("zongrenshi");
+     if(fuxi!=null)
+       zhangwoItem.put("fuxi", zhangwoToInt(fuxi));
+     if(renshi!=null)
+       zhangwoItem.put("renshi", zhangwoToInt(renshi));
+     if(jiyizhouqi!=null)
+       zhangwoItem.put("jiyizhouqi", zhangwoToInt(jiyizhouqi));
+     if(zongrenshi!=null)
+       zhangwoItem.put("zongrenshi", zhangwoToInt(zongrenshi));
+      
+   }
+   return zhangwoJson;
+ }
+  
+  private JSONObject readdcToInt(JSONObject readdcJson){
+    for (Map.Entry entry : readdcJson.entrySet()) {
+      JSONObject zhangwoItem = (JSONObject)entry.getValue();
+      
+      String xuhao =zhangwoItem.getString("xuhao");
+      
+      String duanluo =zhangwoItem.getString("duanluo");
+      if(xuhao!=null)
+      zhangwoItem.put("xuhao", zhangwoToInt(xuhao));
+      if(duanluo!=null)
+      zhangwoItem.put("duanluo", zhangwoToInt(duanluo));
+      
+      
+    }
+    return readdcJson;
+  }
+ private Integer zhangwoToInt(String str){
+    if(str==null)
+      return 0;
+   return Double.valueOf(str).intValue();
+  
+ }
   private JSONObject setDate(JSONObject json) {
     JSONObject jsonObjectemtp;
     try{
