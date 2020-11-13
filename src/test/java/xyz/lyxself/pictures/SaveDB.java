@@ -64,7 +64,7 @@ public class SaveDB {
   @Test
   public void saveDB() {
     
-    String originPath = "G:/weixin/basedata/json/";
+    String originPath = "E:/project/idea/kyoneword/data/json/";
     File originFile = new File(originPath);
     File[] files = originFile.listFiles();
     
@@ -82,7 +82,7 @@ public class SaveDB {
           JSONReader reader=new JSONReader(bufferedReader);
   
           save(i,reader);
-          break;
+        //  break;
         }catch(UnsupportedEncodingException e) {
           e.printStackTrace();
         } catch(

@@ -45,8 +45,8 @@ public class Oneword {
     String liju;
     @Column(columnDefinition = "text",name = "lijufanyi")
     String lijufanyi;
-    @Column(columnDefinition = "json",name = "zhangwo")
-    String zhangwo;
+     @Column(columnDefinition = "json",name = "zhangwo")
+     String zhangwo;
     @Column(columnDefinition = "json",name = "readdc")
     String readdc;
     @Column(columnDefinition = "text",name = "cipin")
